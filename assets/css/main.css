@@ -3,11 +3,12 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
     transition: ease all .5s;
 }
 
 body {
-    overflow: hidden;
+    overflow: show;
     background-color: #FAF2AC;
 }
 
@@ -33,10 +34,28 @@ h1 {
 }
 h2 {
     padding-top: 160px;
-    margin-bottom: -10px;
+    margin-bottom: -5px;
     font-size: 34px;
     color: #EF9B0F;
     font-weight: 400;
+}
+
+h4 {
+    font-weight: 200;
+    font-size: 28px;
+    color: #614910
+}
+h4:first-child {
+    padding-top: 50px; /* Make the first title 50 pixels off the top */
+}
+h6 {
+    color: #332607;
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 45px;
+}
+h6 a:hover {
+    font-size: 19px;
 }
 p {
     padding-bottom: 25px;
@@ -65,7 +84,7 @@ span {
     color: #FAF2AC;
     font-size: 18px;
     font-weight: 200;
-    padding: 4px 18px;
+    padding: 6px 18px;
     border: none;
     border-radius: 7px;
     cursor: pointer;
@@ -81,7 +100,7 @@ span {
 .stream:focus { outline: none }
 .nav {
     min-height: 25px;
-    position: fixed;
+    position: absolute;
     left: 50%;
     bottom: 6px;
     transform: translate(-50%, -50%);
@@ -90,7 +109,7 @@ span {
 }
 
 ul {
-    width: 260px;
+    width: 266px;
     border-left: #332607 solid 2px;
     margin: 0 auto;
     padding-left: 10px;
@@ -99,6 +118,9 @@ ul {
 
 li {
     display: inline
+}
+.social {
+    display: inline;
 }
 a.on-link {
     color: #9A751C;
@@ -116,7 +138,7 @@ a {
 }
 
 .left {
-    width: 312px;
+    width: 333px;
     position: absolute;
     top: 25px;
     left: 25px;
@@ -127,18 +149,38 @@ a {
     right: 0;
     bottom:0;
 }
-.thirtypiece-scroller {
-    z-index: 0;
-    display: block;
-    animation: marquee 15s linear infinite;
+.scroller {
+    position: relative;
+    z-index: -999;
 }
 p.scroller:nth-child(odd) {
     letter-spacing: 0.195em;
+}
+.thirtypiece-scroller {
+    display: block;
+    height: 480px;
+    animation: marquee 15s linear infinite;
 }
 .thirtypiece-scroller .two {
     display: inline-block;
     animation: marquee2 15s linear infinite;
     animation-delay: 5s;
+}
+
+.not-home {
+    position: relative;
+    z-index: 999;
+    text-align: center;
+    background-color: #FAF2AC;
+}
+.not-home p {
+    padding-top: 25px;
+    font-size: 22px;
+}
+
+footer {
+    margin-top: 50px;
+    height: 50px
 }
 @keyframes marquee {
     from {
@@ -164,11 +206,11 @@ p.scroller:nth-child(odd) {
     }
     .left {
         left: 50px;
-        width: 39%;
+        width: 42%;
     }
     .center, .nav {
-        margin-left: 39%;
-        width: 61%;
+        margin-left: 42%;
+        width: 58%;
     }
     .nav {
         left: 6px;
@@ -186,7 +228,7 @@ p.scroller:nth-child(odd) {
     }
 }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 700px) {
     body {
         overflow: unset;
     }
