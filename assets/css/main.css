@@ -13,7 +13,8 @@ body {
 }
 
 .home {
-    height: 100vh;
+    position: relative;
+    min-height: 100vh;
 }
 .not-home {
     z-index: 2;
@@ -77,7 +78,11 @@ span {
 .solojones {
     margin-bottom: -7px;
     height: auto;
-    width: 400px;
+    width: 500px;
+    transition: ease all 1s;
+}
+.expand {
+    width: 600px;
 }
 .stream {
     background-color: #332607;
@@ -98,8 +103,13 @@ span {
     outline: none;
 }
 .stream:focus { outline: none }
+.spacer {
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+}
 .nav {
-    min-height: 25px;
+    max-height: 25px;
     position: absolute;
     left: 50%;
     bottom: 6px;
@@ -161,10 +171,10 @@ p.scroller:nth-child(odd) {
     height: 480px;
     animation: marquee 15s linear infinite;
 }
-.thirtypiece-scroller .two {
+.two {
+    margin-top: 240px;
     display: inline-block;
     animation: marquee2 15s linear infinite;
-    animation-delay: 5s;
 }
 
 .not-home {
@@ -196,11 +206,23 @@ footer {
       transform: translateY(0%);
     }
     to {
-      transform: translateY(-200%);
+      transform: translateY(-100%);
     }
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1400px), (max-height: 880px) {
+    .solojones {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .solojones {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 975px) {
     .right {
         display: none;
     }
