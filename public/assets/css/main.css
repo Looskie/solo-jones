@@ -12,7 +12,7 @@ html {
 }
 
 body {
-    background-color: #FAF2AC;
+    background-color: rgba(250, 242, 172, 1);
 }
 
 .home {
@@ -28,7 +28,6 @@ body {
     text-align: center;
     z-index:999;
 }
-
 
 h1, p {
     color: #FFBF00;
@@ -47,9 +46,9 @@ h2 {
 }
 
 h4 {
-    font-weight: 200;
+    font-weight: 500;
     font-size: 28px;
-    color: #614910
+    color: #EF9B0F;
 }
 h4:first-child {
     padding-top: 50px; /* Make the first title 50 pixels off the top */
@@ -73,6 +72,29 @@ p.scroller, span {
     line-height: 35px;
     letter-spacing: 0.095em;
 }
+.appleMusicIcon {
+    width: 31px;
+    height: auto;
+}
+.toggleOn {
+    display: unset!important;
+    opacity:1;
+    animation: fadeIn 1s;
+}
+.toggleOff {
+    display: none!important;
+    opacity:0;
+    animation: fadeOut 1s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+@keyframes fadeOut {
+    from { opacity: 1; }
+      to { opacity: 0; }
+}
+
 p.scroller {
     color: #49360A;
     opacity: .4;
@@ -131,13 +153,21 @@ ul {
     padding-left: 10px;
     left: 6px;
 }
+ul.social {
+    border: none;
+}
 
 li {
     display: inline;
 }
+ul.social li {
+    padding-right: 20px;
+}
+
 .social {
     display: inline;
 }
+
 a.on-link {
     color: #EF9B0F;
     opacity: .7;
@@ -153,6 +183,15 @@ a {
     text-decoration: none;
     color: #49360A;
     opacity: .2;
+}
+a.social {
+    width: 50px;
+    height: auto;
+    opacity: .6;
+}
+a.social:hover {
+    opacity: 1;
+    border: none;
 }
 
 .left {
@@ -198,6 +237,19 @@ p.scroller:nth-child(odd) {
 }
 #MUSIC {
     font-weight: 400;
+}
+.platform {
+    display: none;
+    text-align: center;
+}
+.platform h4 {
+    padding:0;
+    margin:0;
+    padding: 15px;
+    font-size: 25px;
+}
+.platform a, .platform a:hover {
+    border: none;
 }
 
 .video {
@@ -257,6 +309,7 @@ p.scroller:nth-child(odd) {
     padding: 0 15px;
     font-size: 17px;
     margin: 0 auto;
+    margin-right: 39%;
     margin-top: -18px;
     border: 0;
     color: #332607;
@@ -270,6 +323,9 @@ p.scroller:nth-child(odd) {
 .musicbtn:hover {
     background-color: #ffe06f;
 }
+.musicbtn:focus {
+    outline:0;
+}
 .music-cover {
     margin-top: -3px;
     position: relative;
@@ -282,6 +338,61 @@ p.scroller:nth-child(odd) {
 .not-home p {
     padding-top: 25px;
     font-size: 22px;
+    color: #332607
+}
+.testimonials {
+    margin-top: 25px;
+    overflow-y: hidden;
+    white-space: nowrap;
+    min-height: 250px;
+}
+.testimonials, .scroll-this, .testimonials {
+    transition: ease all .05s;
+}
+.testimonials::-webkit-scrollbar { background: transparent; width: 0px; }
+.testimonial-backplate {
+    position: absolute;
+    height: 154px;
+    width: 235px;
+    background-color: #fde47f;
+    margin-top: 8px;
+    margin-left: 25px;
+    z-index:-999;
+    transition: ease all .3s;
+}
+.testimonial {
+    display: inline-block;
+    margin-right: 25px;
+    width: 250px;
+    height: 150px;
+    background: #FCDD64;
+    border-radius: 7px;
+    white-space: normal;
+    vertical-align: top
+}
+.testimonial:first-child {
+    margin-left: 30px;
+}
+.testimonial:last-child {
+    margin-right: 30px;
+}
+
+h1.name {
+    text-align: right;
+    font-size: 25px;
+    display: inline;
+    color: #332607;
+}
+h1.country {
+    text-align: right;
+    font-size: 18px;
+    display: inline;
+    color: #332607;
+}
+.message {
+    color: #332607;
+    padding: 5px;
+    font-size: 20px;
 }
 
 footer {
@@ -362,6 +473,39 @@ footer {
     }
 }
 
+@media screen and (max-width: 1500px) {
+    .testimonials:active {
+        cursor: grabbing;
+    }
+    .testimonials {
+        cursor: grab;
+    }
+}
+
+@media screen and (max-width: 1360px) {
+    .backplate-video {
+        margin: 0;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .parent {
+        display: grid;
+        grid-template-columns: .25fr .55fr .5fr .55fr .25fr;
+        grid-template-rows: repeat(2, 1fr) 0fr .05fr 1fr .1fr 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        }
+        
+        .div1 { grid-area: 1 / 2 / 4 / 5; position: relative; text-align: center; }
+        .div2 { grid-area: 5 / 2 / 6 / 3; }
+        .div3 { grid-area: 5 / 4 / 6 / 5; }
+        .div4 { grid-area: 7 / 2 / 8 / 3; }
+        .div5 { grid-area: 7 / 4 / 8 / 5; }
+        .div6 { grid-area: 4 / 2 / 5 / 3; }
+}
+
 @media screen and (max-width: 1400px), (max-height: 880px) {
     .solojones {
         width: 480px;
@@ -418,4 +562,46 @@ footer {
         bottom: 6px;
         margin-bottom: 12px;
     }
+}
+
+@media screen and (max-width: 688px) {
+    .backplate-video {
+        width: 100%;
+        height: unset;
+        background-color: unset;
+    }
+    .backplate-video:hover {
+        width: 100%;
+        height: unset;
+        background-color: unset;
+    }
+    .video {
+        padding: 20px;
+        width: 94%;
+        height: 300px;
+        box-shadow: unset;
+    }
+}
+
+@media screen and (max-width: 585px) {
+    .video {
+        padding: 0px;
+        width: 116%;
+        height: 230px;
+        margin-left: -29px;
+        box-shadow: unset;
+    }
+    .parent {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr) .5fr repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr) 0fr 1.5fr .5fr 1.5fr .5fr 1.5fr .5fr 1.5fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        }
+        
+        .div1 { grid-area: 1 / 2 / 4 / 5; }
+        .div2 { grid-area: 5 / 3 / 6 / 4; }
+        .div3 { grid-area: 7 / 3 / 8 / 4; }
+        .div4 { grid-area: 9 / 3 / 10 / 4; }
+        .div5 { grid-area: 11 / 3 / 12 / 4; }
 }

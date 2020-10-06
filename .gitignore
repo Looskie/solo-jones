@@ -1,4 +1,6 @@
 assets/css/.DS_Store
 assets/img/.DS_Store
 assets/.DS_Store
+node_modules
 .DS_Store
+.env
