@@ -6,13 +6,10 @@
     scroll-behavior: smooth;
     transition: ease all .5s;
 }
-
-html {
-    overflow-x: hidden;
-}
-
 body {
     background-color: rgba(250, 242, 172, 1);
+    overflow-x: hidden;
+    width: 100%;
 }
 
 .home {
@@ -347,7 +344,7 @@ p.scroller:nth-child(odd) {
     min-height: 250px;
 }
 .testimonials, .scroll-this, .testimonials {
-    transition: ease all .05s;
+    transition: none;
 }
 .testimonials::-webkit-scrollbar { background: transparent; width: 0px; }
 .testimonial-backplate {
@@ -358,17 +355,17 @@ p.scroller:nth-child(odd) {
     margin-top: 8px;
     margin-left: 25px;
     z-index:-999;
-    transition: ease all .3s;
 }
 .testimonial {
     display: inline-block;
     margin-right: 25px;
-    width: 250px;
-    height: 150px;
+    max-width: 250px;
+    min-height: 150px;
     background: #FCDD64;
     border-radius: 7px;
     white-space: normal;
-    vertical-align: top
+    vertical-align: top;
+    text-align: left;
 }
 .testimonial:first-child {
     margin-left: 30px;
@@ -390,6 +387,7 @@ h1.country {
     color: #332607;
 }
 .message {
+    width: 250px;
     color: #332607;
     padding: 5px;
     font-size: 20px;
