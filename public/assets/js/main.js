@@ -55,10 +55,10 @@ async function postTestimonial() {
             .then(res => res.json())
             .then(json => {
                 if (json.status == 'success') {
-                    castSuccess('Success!');
                     localStorage.setItem('ID', json.id);
                     localStorage.setItem('message', testimonial);
                     getTestimonial();
+                    castSuccess('Success!');
                 } else {
                     castError('An error occured!');
                 }
@@ -77,16 +77,12 @@ async function postTestimonial() {
 
 function castError(err) {
     $(`<div class="error"> <h6 class="error">${err}</h6></div>`).appendTo('.errorsAndSuccesses');
-    setTimeout(() => {
-        $('.error').fadeOut(1500)
-    }, 3000);
+    setTimeout(() => $('.success').fadeOut(1500), 3000);
 }
 
 function castSuccess(succ) {
     $(`<div class="success"> <h6 class="success">${succ}</h6></div>`).appendTo('.errorsAndSuccesses');
-    setTimeout(() => {
-        $('.success').fadeOut(1500)
-    }, 3000);
+    setTimeout(() => $('.success').fadeOut(1500), 3000);
 }
 
 async function checkId(method) {
@@ -129,7 +125,6 @@ function editPost() {
     fetch('/changeTestimonial', options)
         .then(response => response.json())
         .then(json => {
-            console.log(json);
             if (json.status == 'success') {
                 getTestimonial();
                 castSuccess('Successfully edited your post!');
