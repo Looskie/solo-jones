@@ -1,3 +1,4 @@
+/* MADE BY DEVLOOSKIE */
 *,
 *::before,
 *::after {
@@ -12,6 +13,19 @@ body {
 	background-color: rgba(250, 242, 172, 1);
 	overflow-x: hidden;
 	width: 100%;
+}
+body::-webkit-scrollbar {
+	width: 10px;
+}
+body::-webkit-scrollbar-track {
+	background: rgb(255, 250, 204);
+}
+body::-webkit-scrollbar-thumb {
+	background: #cca343;
+	border-radius: 8px;
+}
+p, span, .steam:hover {
+	color: #ffbf00;
 }
 
 .home {
@@ -55,12 +69,13 @@ h4:first-child {
 }
 h6 {
 	color: #332607;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: 200;
 	line-height: 45px;
 }
-h6 a:hover {
-	font-size: 19px;
+h6 a {
+	font-size: 18px;
+	font-weight: 400;
 }
 p {
 	padding-bottom: 25px;

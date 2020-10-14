@@ -1,7 +1,6 @@
 $(window).on('load', () => {
     console.log('%c%s', 'color:#fbe177; font-size: 25px;', 'Whatcha snoopin\' fo?');
     console.log('%c%s', 'color:#fbe177; font-size: 13px; font-weight: 200;', '(WEBSITE MADE BY DEVLOOSKIE)');
-    console.error('suck my cock nathan');
     $('#homepicture').addClass('expand');
     $('.thirtypiece-scroller, .two').addClass('fastboygozoooooom');
     setTimeout(() => {
