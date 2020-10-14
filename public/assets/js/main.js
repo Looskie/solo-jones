@@ -63,7 +63,7 @@ function postTestimonial() {
                     castError('An error occured!');
                 }
             })
-            .catch(err => castError('Error! You\'ve already posted a testimonial!'))
+            .catch(() => castError('Error! You\'ve already posted a testimonial!'))
     } else {
         if (name == "") {
             castError('You need to enter a name!');
@@ -77,12 +77,12 @@ function postTestimonial() {
 
 function castError(err) {
     $(`<div class="error"> <h6 class="error">${err}</h6></div>`).appendTo('.errorsAndSuccesses');
-    setTimeout(() => $('.success').fadeOut(1500), 3000);
+    setTimeout($('.error').fadeOut(2000), 3000);
 }
 
 function castSuccess(succ) {
     $(`<div class="success"> <h6 class="success">${succ}</h6></div>`).appendTo('.errorsAndSuccesses');
-    setTimeout(() => $('.success').fadeOut(1500), 3000);
+    setTimeout($('.success').fadeOut(2000), 3000);
 }
 
 function checkId(method) {
