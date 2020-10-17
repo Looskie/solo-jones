@@ -20,7 +20,7 @@ const postLimiter = rateLimit({
         "bruh"
 });
 
-app.post('/postTestimonial', (req, res) => {
+app.post('/postTestimonial', postLimiter, (req, res) => {
     const name = req.body.name,
         country = req.body.country,
         testimonial = req.body.testimonial;
