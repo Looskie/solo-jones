@@ -24,6 +24,7 @@ body::-webkit-scrollbar-thumb {
 	background: #cca343;
 	border-radius: 8px;
 }
+
 p, span, .steam:hover {
 	color: #ffbf00;
 }
@@ -173,7 +174,7 @@ span {
 }
 
 ul {
-	width: 310px;
+	width: 320px;
 	border-left: #332607 solid 2px;
 	margin: 0 auto;
 	padding-left: 10px;
@@ -690,8 +691,16 @@ h6.success {
 		cursor: grab;
 	}
 }
-
 @media screen and (max-width: 1360px) {
+	.backplate-video {
+		margin-left: 54px;
+	}
+	.backplate {
+		margin-right: 10px;
+	}
+}
+
+@media screen and (max-width: 1210px) {
 	.backplate-video {
 		margin: 0;
 		position: absolute;

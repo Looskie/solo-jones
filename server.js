@@ -4,11 +4,13 @@ const app = express();
 const Datastore = require('nedb');
 const database = new Datastore({ filename: 'testimonials', autoload: true });
 const rateLimit = require("express-rate-limit");
+const ejs = require('ejs');
 require('dotenv').config();
 const port = process.env.PORT;
 
 database.loadDatabase();
 app.use(express.static('./public'));
+app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.listen(port || 3000, () => console.log('Running on 3000'));
@@ -20,7 +22,7 @@ const postLimiter = rateLimit({
         "bruh"
 });
 
-app.post('/postTestimonial', (req, res) => {
+app.post('/postTestimonial', postLimiter, (req, res) => {
     const name = req.body.name,
         country = req.body.country,
         testimonial = req.body.testimonial;
@@ -93,4 +95,9 @@ app.post('/deleteTestimonial', (req, res) => {
             if (err) console.log(err);
         })
     })
+})
+
+app.get('*/:query', (req, res) => {
+    const query = req.params.query;
+    res.render('404', { data: { query: query } });
 })
