@@ -36,13 +36,14 @@ h1 {
 }
 
 h2 {
-  color: #d8941e;
+  color: #c25353;
   padding: 25px;
   font-weight: 300;
   font-size: 28px;
 }
 
 span {
+	font-size: 15px;
   opacity: .7;
   color: #cf5454;
 }
@@ -68,11 +69,11 @@ h6 {
 p {
   padding: 0 25px 25px 25px;
   font-size: 18px;
-  color: #ac823b;
+  color: #bb862a;
 }
 
 .error-container {
-  background-color: #fcdd64;
+  background-color: #ffe26d;
   width: 55%;
   margin: 0 auto;
   border-radius: 8px;
@@ -101,7 +102,7 @@ p {
 }
 
 .home:hover {
-	background-color: #ffe585;
+	background-color: #fff1c0;
 }
 .home:focus, .spotify:focus, .applemusic:focus {
 	outline: 0;

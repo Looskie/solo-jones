@@ -37,33 +37,36 @@ function play(song) {
 }
 
 function postTestimonial() {
-    const name = document.getElementById('name').value,
+    var name = document.getElementById('name').value,
         country = document.getElementById('country').value,
         testimonial = document.getElementById('testimonial').value;
     if (!name == "" && !testimonial == "" && name.length <= 12) {
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ name, country, testimonial })
+        if (country == 'auto') {
+            fetch('https://ipapi.co/json/')
+                .then(res => res.json())
+                .then(json => actuallyPost(name, json.country, testimonial))
+                .catch(() => actuallyPost(name, 'USA', testimonial))
+        } else {
+            actuallyPost(name, country, testimonial);
         }
-        fetch('/postTestimonial', options)
-            .then(res => res.json())
-            .then(json => {
-                if (json.status == 'success') {
-                    localStorage.setItem('ID', json.id);
-                    localStorage.setItem('name', name);
-                    localStorage.setItem('country', country);
-                    localStorage.setItem('message', testimonial);
-                    getTestimonial();
-                    clearText();
-                    castSuccess('Success!');
-                } else {
-                    castError('An error occured!');
-                }
-            })
-            .catch(() => castError('Error! You\'ve already posted a testimonial!'))
+        function actuallyPost(name, country, testimonial) {
+            const options = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, country, testimonial }) }
+            fetch('/postTestimonial', options)
+                .then(res => res.json())
+                .then(json => {
+                    if (json.status == 'success') {
+                        localStorage.setItem('ID', json.id);
+                        localStorage.setItem('name', name);
+                        localStorage.setItem('country', country);
+                        localStorage.setItem('message', testimonial);
+                        getTestimonial();
+                        castSuccess('Success!');
+                    } else {
+                        castError('An error occured!');
+                    }
+                })
+                .catch(() => castError('Error! You\'ve already posted a testimonial!'))
+        }
     } else {
         if (name == "") {
             castError('You need to enter a name!');
@@ -73,16 +76,6 @@ function postTestimonial() {
             castError('Your name is too long! (Over 12 characters)');
         }
     }
-}
-
-function castError(err) {
-    $(`<div class="error"> <h6 class="error">${err}</h6></div>`).appendTo('.errorsAndSuccesses');
-    setTimeout($('.error').fadeOut(2000), 3000);
-}
-
-function castSuccess(succ) {
-    $(`<div class="success"> <h6 class="success">${succ}</h6></div>`).appendTo('.errorsAndSuccesses');
-    setTimeout($('.success').fadeOut(2000), 3000);
 }
 
 function checkId(method) {
@@ -128,7 +121,6 @@ function editPost() {
             if (json.status == 'success') {
                 getTestimonial();
                 castSuccess('Successfully edited your post!');
-                clearText()
                 localStorage.setItem('message', testimonialVal);
             } else {
                 castError('There was an error whilst editing your testimonial!');
@@ -145,7 +137,6 @@ function deletePost() {
         .then(json => {
             if (json.status == 'success') {
                 getTestimonial();
-                clearText();
                 $('.editbtn, .deletebtn').remove();
                 castSuccess('Successfully deleted your post!');
                 localStorage.clear();
@@ -160,6 +151,8 @@ function getTestimonial() {
         .then(res => res.json())
         .then(json => {
             for (var i = 0; i <= json.length - 1; i++) {
+                document.getElementById('name').value = '';
+                document.getElementById('testimonial').value = '';
                 if (localStorage.getItem('message') == json[`${i}`].testimonial && localStorage.getItem('name') == json[`${i}`].name && localStorage.getItem('country') == json[`${i}`].country) {
                     $(`<button class="editbtn" onclick="checkId('editPost()')">Edit</button> <button class="deletebtn" onclick="checkId('deletePost()')">Delete</button>`).appendTo(`#buttons${i}`);
                 }
@@ -171,9 +164,14 @@ function getTestimonial() {
         .catch(() => castError('An error occured whilst fetching testimonials'));
 }
 
-function clearText() {
-    document.getElementById('name').value = '';
-    document.getElementById('testimonial').value = '';
+function castError(err) {
+    $(`<div class="error"> <h6 class="error">${err}</h6></div>`).appendTo('.errorsAndSuccesses');
+    setTimeout($('.error').fadeOut(2000), 3000);
+}
+
+function castSuccess(succ) {
+    $(`<div class="success"> <h6 class="success">${succ}</h6></div>`).appendTo('.errorsAndSuccesses');
+    setTimeout($('.success').fadeOut(2000), 3000);
 }
 // Scroller //
 new ScrollBooster({
