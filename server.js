@@ -79,7 +79,7 @@ app.post('/changeTestimonial', (req, res) => {
         testimonial = req.body.testimonialVal,
         _id = req.body.id;
     database.find({ _id: _id }, err => {
-        database.update({ _id: _id }, { $set: { 'name': name, 'country': country, 'testimonial': testimonial } }, (err, data) => {
+        database.update({ _id: _id }, { $set: { 'name': name, 'country': country, 'testimonial': testimonial } }, err => {
             res.json({ status: 'success' })
             if (err) console.log(err);
         })
@@ -89,7 +89,7 @@ app.post('/changeTestimonial', (req, res) => {
 
 app.post('/deleteTestimonial', (req, res) => {
     const _id = req.body.id;
-    database.find({ _id: _id }, err => {
+    database.find({ _id: _id }, () => {
         database.remove({ _id: _id }, err => {
             res.json({ status: 'success' })
             if (err) console.log(err);

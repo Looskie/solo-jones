@@ -1,7 +1,6 @@
 $(window).on('load', () => {
     getTestimonial();
     $('#homepicture').addClass('expand');
-    $('.thirtypiece-scroller, .two').addClass('fastboygozoooooom');
     setTimeout(() => $('.thirtypiece-scroller, .two').removeClass('fastboygozoooooom').addClass('slowboygobruh'), 2545);
     console.log('%c%s', 'color:#fbe177; font-size: 25px;', 'Whatcha snoopin\' fo?');
     console.log('%c%s', 'color:#fbe177; font-size: 13px; font-weight: 200;', '(WEBSITE MADE BY DEVLOOSKIE)');
