@@ -6,6 +6,22 @@ $(window).on('load', () => {
     console.log('%c%s', 'color:#fbe177; font-size: 13px; font-weight: 200;', '(WEBSITE MADE BY DEVLOOSKIE)');
 })
 
+// Character counter
+const textArea = document.querySelector('textarea');
+textArea.addEventListener('input', () => {
+    const numLimit = document.getElementById('numLimit')
+    var charLeft = 70 - textArea.value.length;
+    numLimit.textContent = `${charLeft} `
+    if (charLeft >= 30) {
+        numLimit.style.color = '#95D363'
+    } else if (charLeft <= 10) {
+        numLimit.style.color = '#D36363'
+    } else if (charLeft <= 30) {
+        numLimit.style.color = '#D3CB63'
+    }
+})
+
+
 function play(song) {
     $('#BIGTOEimg, #NOTESimg, #BADDECISIONSimg, #THIRTYPIECEimg').removeClass('toggleOff').addClass('toggleOn');
     $('#BIGTOEselector, #NOTESselector, #BADDECISIONSselector, #THIRTYPIECEselector').removeClass('toggleOn');
