@@ -8,3 +8,6 @@
 {"$$deleted":true,"_id":"IAhAvd2fN1nxTaGq"}
 {"name":"test","country":"USA","testimonial":"mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm","postedAt":{"$$date":1603852360498},"_id":"XEWoc8kEsKOwi0w2"}
 {"$$deleted":true,"_id":"XEWoc8kEsKOwi0w2"}
+{"name":"testing","country":"Algeria","testimonial":"testing","postedAt":{"$$date":1603855208574},"_id":"W7sJ0mMrshNksYsc"}
+{"name":"testing","country":"Algeria","testimonial":"testingwergewrg","postedAt":{"$$date":1603855208574},"_id":"W7sJ0mMrshNksYsc"}
+{"$$deleted":true,"_id":"W7sJ0mMrshNksYsc"}
