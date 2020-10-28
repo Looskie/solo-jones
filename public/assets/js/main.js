@@ -7,7 +7,9 @@ $(window).on('load', () => {
 })
 
 function play(song) {
-    closeOthers();
+    $('#BIGTOEimg, #NOTESimg, #BADDECISIONSimg, #THIRTYPIECEimg').removeClass('toggleOff').addClass('toggleOn');
+    $('#BIGTOEselector, #NOTESselector, #BADDECISIONSselector, #THIRTYPIECEselector').removeClass('toggleOn');
+    $('#BIGTOE, #NOTES, #BADDECISIONS, #THIRTYPIECE').removeClass('toggleOff');
     switch (true) {
         case song == 'THIRTYPIECE':
             $('#THIRTYPIECEimg, #THIRTYPIECE').addClass('toggleOff');
@@ -27,11 +29,6 @@ function play(song) {
             break;
         default:
             console.log('ERROR: Song not found!');
-    }
-    function closeOthers() {
-        $('#BIGTOEimg, #NOTESimg, #BADDECISIONSimg, #THIRTYPIECEimg').removeClass('toggleOff').addClass('toggleOn');
-        $('#BIGTOEselector, #NOTESselector, #BADDECISIONSselector, #THIRTYPIECEselector').removeClass('toggleOn');
-        $('#BIGTOE, #NOTES, #BADDECISIONS, #THIRTYPIECE').removeClass('toggleOff');
     }
 }
 
@@ -61,7 +58,7 @@ function postTestimonial() {
                         getTestimonial();
                         castSuccess('Success!');
                     } else {
-                        castError('An error occured!');
+                        castError(`Error! ${json.message}`);
                     }
                 })
                 .catch(() => castError('Error! You\'ve already posted a testimonial!'))
@@ -122,7 +119,7 @@ function editPost() {
                 castSuccess('Successfully edited your post!');
                 localStorage.setItem('message', testimonialVal);
             } else {
-                castError('There was an error whilst editing your testimonial!');
+                castError(`Error! ${json.message}`);
             }
             submitbtn.textContent = 'SUBMIT';
             submitbtn.setAttribute('onClick', 'postTestimonial()');
@@ -136,7 +133,7 @@ function deletePost() {
         .then(json => {
             if (json.status == 'success') {
                 getTestimonial();
-                $('.editbtn, .deletebtn').remove();
+                $('.editbtn, .deletebtn, .long').remove();
                 castSuccess('Successfully deleted your post!');
                 localStorage.clear();
             } else {
@@ -153,6 +150,9 @@ function getTestimonial() {
                 document.getElementById('name').value = '';
                 document.getElementById('testimonial').value = '';
                 if (localStorage.getItem('message') == json[`${i}`].testimonial && localStorage.getItem('name') == json[`${i}`].name && localStorage.getItem('country') == json[`${i}`].country) {
+                    if (localStorage.getItem('message').length >= 70) {
+                        $(`#buttons${i}`).addClass('long');
+                    }
                     $(`<button class="editbtn" onclick="checkId('editPost()')">Edit</button> <button class="deletebtn" onclick="checkId('deletePost()')">Delete</button>`).appendTo(`#buttons${i}`);
                 }
                 document.getElementById(`namefield${i}`).textContent = json[`${i}`].name;

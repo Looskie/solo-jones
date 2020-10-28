@@ -26,7 +26,7 @@ app.post('/postTestimonial', postLimiter, (req, res) => {
     const name = req.body.name,
         country = req.body.country,
         testimonial = req.body.testimonial;
-    if (testimonial.length <= 91) {
+    if (testimonial.length <= 70) {
         try {
             var entry = {
                 name: name,
@@ -49,7 +49,7 @@ app.post('/postTestimonial', postLimiter, (req, res) => {
     } else {
         res.json({
             status: 'failed!',
-            message: 'The length of your testimonial is too long!'
+            message: 'The length of your testimonial is too long! Keep it under 70 characters!'
         })
     }
 })
@@ -79,11 +79,20 @@ app.post('/changeTestimonial', (req, res) => {
         testimonial = req.body.testimonialVal,
         _id = req.body.id;
     database.find({ _id: _id }, err => {
-        database.update({ _id: _id }, { $set: { 'name': name, 'country': country, 'testimonial': testimonial } }, err => {
-            res.json({ status: 'success' })
-            if (err) console.log(err);
-        })
-        if (err) { res.json({ status: 'Incorrect ID! Please set the correct one!' }) }
+        if (testimonial.length <= 70) {
+            database.update({ _id: _id }, { $set: { 'name': name, 'country': country, 'testimonial': testimonial } }, err => {
+                res.json({ status: 'success' })
+                if (err) console.log(err);
+            })
+        } else {
+            res.json({
+                status: 'failed!',
+                message: 'The length of your testimonial is too long! Keep it under 70 characters!'
+            })
+        }
+        if (err) {
+            res.json({ status: 'Incorrect ID! Please set the correct one!' })
+        }
     })
 })
 

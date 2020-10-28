@@ -10,7 +10,7 @@
 	transition: ease all 0.5s;
 }
 body {
-	background-color: rgba(250, 242, 172, 1);
+	background-color: #23252D;
 	overflow-x: hidden;
   width: 100%;
 }
@@ -18,10 +18,10 @@ body::-webkit-scrollbar {
 	width: 10px;
 }
 body::-webkit-scrollbar-track {
-	background: rgb(255, 250, 204);
+	background:#9f9fa8;
 }
 body::-webkit-scrollbar-thumb {
-	background: #cca343;
+	background: #5f6066;
 	border-radius: 8px;
 }
 .error-container, h1, footer {
@@ -56,11 +56,11 @@ span#or {
   font-size: 20px;
   margin: 10px;
   display: block;
-  color: #332607;
+  color: #7a7a88;
 }
 
 h6 {
-	color: #332607;
+	color: #767782;
 	font-size: 18px;
 	font-weight: 200;
 	line-height: 45px;
@@ -69,11 +69,11 @@ h6 {
 p {
   padding: 0 25px 25px 25px;
   font-size: 18px;
-  color: #bb862a;
+  color: #9f9fa8;
 }
 
 .error-container {
-  background-color: #ffe26d;
+  background-color: #40444b;
   width: 55%;
   margin: 0 auto;
   border-radius: 8px;
@@ -92,9 +92,9 @@ p {
   margin: 0 auto;
   margin-top: -33px;
 	border: 0;
-	color: #332607;
+	color: #303535;
 	border-radius: 5px;
-	background-color: #fae8a8;
+	background-color: #E9CF72;
 	box-shadow: 6px 4px 16px rgba(0, 0, 0, 0.25);
 	z-index: 999;
 	cursor: pointer;
@@ -102,7 +102,7 @@ p {
 }
 
 .home:hover {
-	background-color: #fff1c0;
+	background-color: #fdeaa3;
 }
 .home:focus, .spotify:focus, .applemusic:focus {
 	outline: 0;
@@ -127,14 +127,14 @@ h6 a {
 }
 
 a:hover {
-	color: #ef9b0f;
+	color: #fdeaa3;
 	border-bottom: #9a751c solid 1px;
 	opacity: 0.5;
 }
 a {
 	font-size: 1.35em;
 	text-decoration: none;
-	color: #49360a;
+	color: #767782;
 	opacity: 0.2;
 }
 
