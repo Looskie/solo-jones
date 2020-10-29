@@ -855,7 +855,7 @@ h6.success {
 @media screen and (max-width: 1000px) {
 	.merch-container {
 		flex-direction: column;
-		height: 1450px;
+		height: 1300px;
 		justify-content: center;
 	}
 	.merch {
